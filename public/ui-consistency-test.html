@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Consistency Test - Lab NCS</title>
+    
+    <!-- Dark Mode Script -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-shield-check me-2 text-warning"></i>
+                <span class="fw-bold text-warning">Lab NCS</span>
+            </a>
+            
+            <div class="ms-auto">
+                <button id="theme-toggle" class="nav-link btn btn-link text-white" type="button" title="Toggle Dark Mode">
+                    <i id="theme-toggle-dark-icon" class="bi bi-moon-stars-fill d-none"></i>
+                    <i id="theme-toggle-light-icon" class="bi bi-sun-fill d-none"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-primary py-5" style="min-height: 50vh;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold text-white mb-4">
+                        UI Consistency <span class="text-warning">Test Page</span>
+                    </h1>
+                    <p class="lead text-white-50 mb-4">
+                        Test halaman untuk memastikan semua komponen UI konsisten di light & dark mode
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section - Light Background -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold mb-3">Section dengan Background Light</h2>
+                <p class="text-muted">Cards dan teks harus terlihat jelas di kedua mode</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box mb-4">
+                                <div class="icon-circle bg-primary bg-opacity-10 d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 80px; height: 80px; border-radius: 50%;">
+                                    <i class="bi bi-shield-lock text-primary" style="font-size: 2.5rem;"></i>
+                                </div>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Cyber Security</h5>
+                            <p class="card-text text-muted">
+                                Penelitian keamanan sistem informasi, penetration testing, 
+                                dan pengembangan defense mechanism.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box mb-4">
+                                <div class="icon-circle bg-success bg-opacity-10 d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 80px; height: 80px; border-radius: 50%;">
+                                    <i class="bi bi-diagram-3 text-success" style="font-size: 2.5rem;"></i>
+                                </div>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Network Security</h5>
+                            <p class="card-text text-muted">
+                                Pengembangan infrastruktur jaringan yang aman dan network monitoring.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box mb-4">
+                                <div class="icon-circle bg-danger bg-opacity-10 d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 80px; height: 80px; border-radius: 50%;">
+                                    <i class="bi bi-cpu text-danger" style="font-size: 2.5rem;"></i>
+                                </div>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">IoT Security</h5>
+                            <p class="card-text text-muted">
+                                Keamanan perangkat Internet of Things dan embedded systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section - White Background -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="display-6 fw-bold mb-4">Section dengan Background Default</h2>
+            <p class="lead mb-4">Lead text yang menjelaskan konten section ini.</p>
+            <p class="text-muted">
+                Text biasa dengan class text-muted untuk menunjukkan informasi sekunder.
+                Harus mudah dibaca di kedua mode.
+            </p>
+            
+            <div class="row mt-5 g-4">
+                <div class="col-md-6">
+                    <div class="card border shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Card dengan Border</h5>
+                            <p class="card-text text-muted">
+                                Card ini memiliki border untuk menunjukkan outline di kedua mode.
+                            </p>
+                            <a href="#" class="btn btn-primary">Primary Button</a>
+                            <a href="#" class="btn btn-outline-light">Outline Button</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card bg-light border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Card dengan BG Light</h5>
+                            <p class="card-text text-muted">
+                                Card ini menggunakan background light yang harus berubah di dark mode.
+                            </p>
+                            <span class="badge bg-primary">Primary</span>
+                            <span class="badge bg-success">Success</span>
+                            <span class="badge bg-warning text-dark">Warning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alert Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="fw-bold mb-4">Alerts & Notifications</h3>
+            
+            <div class="alert alert-info">
+                <h5><i class="bi bi-info-circle me-2"></i>Info Alert</h5>
+                <p class="mb-0">Ini adalah alert info yang harus terlihat jelas di kedua mode.</p>
+            </div>
+            
+            <div class="alert alert-success">
+                <h5><i class="bi bi-check-circle me-2"></i>Success Alert</h5>
+                <p class="mb-0">Alert sukses dengan kontras yang baik.</p>
+            </div>
+            
+            <div class="alert alert-warning">
+                <h5><i class="bi bi-exclamation-triangle me-2"></i>Warning Alert</h5>
+                <p class="mb-0">Alert warning yang mudah dibaca.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Checklist -->
+    <section class="py-5">
+        <div class="container">
+            <div class="card border-warning border-3">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="bi bi-clipboard-check me-2"></i>Testing Checklist</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">✅ Yang Harus Dicek:</h5>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Light Mode:</h6>
+                            <ul>
+                                <li>Section bg-light berwarna abu muda</li>
+                                <li>Text muted mudah dibaca (abu sedang)</li>
+                                <li>Cards memiliki shadow yang subtle</li>
+                                <li>Icon circles dengan opacity tepat</li>
+                                <li>Border terlihat jelas</li>
+                                <li>Alerts dengan warna cerah</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Dark Mode:</h6>
+                            <ul>
+                                <li>Section bg-light berubah jadi gelap</li>
+                                <li>Text muted tetap readable (abu terang)</li>
+                                <li>Cards dengan shadow lebih gelap</li>
+                                <li>Icon circles subtle di background gelap</li>
+                                <li>Border menggunakan border-color gelap</li>
+                                <li>Alerts tetap terlihat jelas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="alert alert-success">
+                        <h5><i class="bi bi-check-circle-fill me-2"></i>Test Passed!</h5>
+                        <p class="mb-0">Jika semua poin di atas terpenuhi, maka UI consistency sudah tercapai dengan sempurna! 🎉</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-custom pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-warning mb-3 fw-bold">Lab Network & Cyber Security</h5>
+                    <p class="footer-text">
+                        Footer yang konsisten dengan navbar menggunakan warna kuning sebagai accent.
+                    </p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p class="footer-text mb-0">© 2025 Lab NCS - Polinema</p>
+                    <p class="footer-text small">Dikembangkan dengan ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/custom.js"></script>
+</body>
+</html>
