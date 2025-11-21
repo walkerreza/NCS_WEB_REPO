@@ -5,31 +5,33 @@
 
 @section('content')
 <!-- Breadcrumb -->
-<section class="py-3 bg-light">
-    <div class="container">
+<section class="py-4 bg-gray-50 dark:bg-slate-800">
+    <div class="container mx-auto px-4">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="{{ route('beranda') }}" class="text-decoration-none">Beranda</a></li>
-                <li class="breadcrumb-item">Arsip</li>
-                <li class="breadcrumb-item active" aria-current="page">Penelitian</li>
+            <ol class="flex items-center space-x-2 text-sm">
+                <li><a href="{{ route('beranda') }}" class="text-blue-600 hover:text-blue-800 no-underline">Beranda</a></li>
+                <li class="text-gray-500">/</li>
+                <li class="text-gray-600 dark:text-gray-400">Arsip</li>
+                <li class="text-gray-500">/</li>
+                <li class="text-gray-700 dark:text-gray-300" aria-current="page">Penelitian</li>
             </ol>
         </nav>
     </div>
 </section>
 
 <!-- Arsip Penelitian Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-md-8" data-aos="fade-right">
-                <h1 class="display-6 fw-bold mb-2">Arsip Penelitian</h1>
-                <p class="text-muted">Dokumen dan publikasi penelitian laboratorium</p>
+<section class="py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8">
+            <div class="md:col-span-8" data-aos="fade-right">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">Arsip Penelitian</h1>
+                <p class="text-gray-600 dark:text-gray-400">Dokumen dan publikasi penelitian laboratorium</p>
             </div>
-            <div class="col-md-4" data-aos="fade-left">
+            <div class="md:col-span-4" data-aos="fade-left">
                 <!-- Filter/Search -->
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari dokumen..." id="searchArchive">
-                    <button class="btn btn-primary" type="button">
+                <div class="flex">
+                    <input type="text" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" placeholder="Cari dokumen..." id="searchArchive">
+                    <button class="btn-primary px-6 py-2 rounded-r-lg" type="button">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
@@ -37,47 +39,47 @@
         </div>
         
         <!-- Archive List -->
-        <div class="row g-3">
+        <div class="space-y-4">
             {{-- Contoh Static Data - nanti akan diganti dengan data dari database --}}
             @for($i = 1; $i <= 10; $i++)
-            <div class="col-12 archive-card" 
+            <div class="archive-card" 
                  data-title="Penelitian Keamanan Sistem Informasi {{ $i }}" 
                  data-author="Dr. Peneliti {{ $i }}" 
                  data-aos="fade-up" 
                  data-aos-delay="{{ $i * 30 }}">
-                <div class="card border-0 shadow-sm hover-lift">
-                    <div class="card-body p-4">
-                        <div class="row align-items-center">
-                            <div class="col-lg-2 text-center mb-3 mb-lg-0">
+                <div class="card border-0 shadow-sm hover-lift bg-white dark:bg-slate-700 rounded-xl">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                            <div class="lg:col-span-2 text-center">
                                 <div class="file-icon">
-                                    <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 3.5rem;"></i>
+                                    <i class="bi bi-file-earmark-pdf text-red-600" style="font-size: 3.5rem;"></i>
                                 </div>
-                                <small class="text-muted d-block mt-2">PDF</small>
+                                <small class="text-gray-600 dark:text-gray-400 block mt-2">PDF</small>
                             </div>
-                            <div class="col-lg-8 mb-3 mb-lg-0">
-                                <h5 class="fw-bold mb-2">Penelitian Keamanan Sistem Informasi Berbasis Cloud Computing {{ $i }}</h5>
-                                <div class="d-flex flex-wrap gap-3 text-muted small mb-2">
-                                    <span><i class="bi bi-person me-1"></i>Dr. Peneliti {{ $i }}, M.T.</span>
-                                    <span><i class="bi bi-calendar3 me-1"></i>{{ date('Y', strtotime('-' . $i . ' years')) }}</span>
-                                    <span><i class="bi bi-tag me-1"></i>Cyber Security</span>
+                            <div class="lg:col-span-8">
+                                <h5 class="text-xl font-bold mb-2">Penelitian Keamanan Sistem Informasi Berbasis Cloud Computing {{ $i }}</h5>
+                                <div class="flex flex-wrap gap-4 text-gray-600 dark:text-gray-400 text-sm mb-2">
+                                    <span class="inline-flex items-center"><i class="bi bi-person mr-1"></i>Dr. Peneliti {{ $i }}, M.T.</span>
+                                    <span class="inline-flex items-center"><i class="bi bi-calendar3 mr-1"></i>{{ date('Y', strtotime('-' . $i . ' years')) }}</span>
+                                    <span class="inline-flex items-center"><i class="bi bi-tag mr-1"></i>Cyber Security</span>
                                 </div>
-                                <p class="text-muted small mb-0">
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-0">
                                     Penelitian ini membahas tentang implementasi keamanan sistem informasi 
                                     pada infrastruktur cloud computing dengan fokus pada authentication, 
                                     authorization, dan encryption.
                                 </p>
                             </div>
-                            <div class="col-lg-2 text-lg-end">
-                                <div class="d-flex flex-column gap-2">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="bi bi-download me-1"></i>Download
+                            <div class="lg:col-span-2 text-center lg:text-right">
+                                <div class="flex flex-col gap-2">
+                                    <a href="#" class="btn-primary inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm">
+                                        <i class="bi bi-download mr-1"></i>Download
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-eye me-1"></i>Detail
+                                    <a href="#" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm transition-all duration-300">
+                                        <i class="bi bi-eye mr-1"></i>Detail
                                     </a>
                                 </div>
-                                <small class="text-muted d-block mt-2">
-                                    <i class="bi bi-download me-1"></i>{{ rand(50, 500) }} unduhan
+                                <small class="text-gray-600 dark:text-gray-400 block mt-2">
+                                    <i class="bi bi-download mr-1"></i>{{ rand(50, 500) }} unduhan
                                 </small>
                             </div>
                         </div>
@@ -88,17 +90,17 @@
         </div>
         
         <!-- Pagination -->
-        <div class="d-flex justify-content-center mt-5">
+        <div class="flex justify-center mt-12">
             <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                <ul class="flex items-center gap-2">
+                    <li>
+                        <a class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-slate-700 text-gray-400 cursor-not-allowed" href="#" tabindex="-1">Previous</a>
                     </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                    <li><a class="px-4 py-2 rounded-lg bg-blue-600 text-white" href="#">1</a></li>
+                    <li><a class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-blue-500 hover:text-white transition-all" href="#">2</a></li>
+                    <li><a class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-blue-500 hover:text-white transition-all" href="#">3</a></li>
+                    <li>
+                        <a class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-blue-500 hover:text-white transition-all" href="#">Next</a>
                     </li>
                 </ul>
             </nav>

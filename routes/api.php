@@ -86,7 +86,7 @@ Route::prefix('settings')->group(function () {
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
     
     // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/admin/dashboard', [DashboardController::class, 'index']);
     Route::get('/stats', [DashboardController::class, 'stats']);
     
     // Profiles Management

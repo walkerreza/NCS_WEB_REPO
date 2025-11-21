@@ -13,17 +13,51 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <style>
+            body {
+                background-image: url('{{ asset('images/Lab Koputer.jpg') }}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            
+            /* Overlay for better readability */
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3);
+                z-index: 0;
+            }
+        </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
+    <body class="font-sans antialiased min-h-screen">
+        <!-- Logo Section - Responsive positioning -->
+        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-10">
+            <div class="inline-block bg-transparent p-2 sm:p-4 rounded-2xl shadow-xl">
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <x-application-logo class="h-16 sm:h-20 lg:h-24 w-auto mx-auto" />
                 </a>
             </div>
+        </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+        <!-- Main Container -->
+        <div class="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8 relative z-10">
+            <div class="w-full max-w-sm sm:max-w-md lg:max-w-lg">
+                <!-- Card - Responsive spacing and sizing -->
+                <div class="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 mt-16 sm:mt-0 lg:-mt-30">
+                    {{ $slot }}
+                </div>
+
+                <!-- Footer -->
+                <p class="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-white drop-shadow-lg">
+                    © {{ date('Y') }} Lab NCS. All rights reserved.
+                </p>
             </div>
         </div>
     </body>
