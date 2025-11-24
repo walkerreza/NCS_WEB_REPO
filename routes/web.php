@@ -69,45 +69,47 @@ Route::get('/link', function () {
 | Routes untuk admin dashboard (memerlukan autentikasi)
 */
 
-Route::get('/dashboard', function () {
-    return view('pages.Admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('pages.Admin.dashboard');
+    })->name('dashboard');
     
-Route::get('/visi-misi', function () {
-    return view('pages.Admin.VisiMisi');
-})->middleware(['auth', 'verified'])->name('admin.visi-misi');
+    Route::get('/visi-misi', function () {
+        return view('pages.Admin.VisiMisi');
+    })->name('visi-misi');
 
-Route::get('/logo', function () {
-    return view('pages.Admin.logo');
-})->middleware(['auth', 'verified'])->name('admin.logo');
+    Route::get('/logo', function () {
+        return view('pages.Admin.logo');
+    })->name('logo');
 
-Route::get('/struktur-organisasi', function () {
-    return view('pages.Admin.StrukturOrg');
-})->middleware(['auth', 'verified'])->name('admin.struktur-organisasi');
+    Route::get('/struktur-organisasi', function () {
+        return view('pages.Admin.StrukturOrg');
+    })->name('struktur-organisasi');
 
-Route::get('/galeri', function () {
-    return view('pages.Admin.galeri');
-})->middleware(['auth', 'verified'])->name('admin.galeri');
+    Route::get('/galeri', function () {
+        return view('pages.Admin.galeri');
+    })->name('galeri');
 
-Route::get('/penelitian', function () {
-    return view('pages.Admin.penelitian');
-})->middleware(['auth', 'verified'])->name('admin.penelitian');
+    Route::get('/penelitian', function () {
+        return view('pages.Admin.penelitian');
+    })->name('penelitian');
 
-Route::get('/pengabdian', function () {
-    return view('pages.Admin.pengabdian');
-})->middleware(['auth', 'verified'])->name('admin.pengabdian');
+    Route::get('/pengabdian', function () {
+        return view('pages.Admin.pengabdian');
+    })->name('pengabdian');
 
-Route::get('/sarana-prasarana', function () {
-    return view('pages.Admin.Sarpras');
-})->middleware(['auth', 'verified'])->name('admin.sarana-prasarana');
+    Route::get('/sarana-prasarana', function () {
+        return view('pages.Admin.Sarpras');
+    })->name('sarana-prasarana');
 
-Route::get('/konsul', function () {
-    return view('pages.Admin.konsul');
-})->middleware(['auth', 'verified'])->name('admin.konsul');
+    Route::get('/konsul', function () {
+        return view('pages.Admin.konsul');
+    })->name('konsul');
 
-Route::get('/link', function () {
-    return view('pages.Admin.link');
-})->middleware(['auth', 'verified'])->name('admin.link');
+    Route::get('/link', function () {
+        return view('pages.Admin.link');
+    })->name('link');
+});
 
 
 
