@@ -25,7 +25,7 @@
         <ul class="space-y-2 font-medium">
             <!-- Dashboard -->
             <li>
-                <a class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('dashboard') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
+                <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('dashboard') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                     <i class="bi bi-grid-1x2 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Dashboard</span>
                 </a>
@@ -60,17 +60,15 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.logo') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.logo') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-badge-vr text-xs mr-2"></i>
                             <span class="flex-1">Logo</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.struktur-organisasi') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.struktur-organisasi') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-diagram-3 text-xs mr-2"></i>
                             <span class="flex-1">Struktur Organisasi</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                 </ul>
@@ -78,10 +76,9 @@
 
             <!-- Galeri -->
             <li>
-                <a target="_blank" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="{{ route('admin.galeri') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('admin.galeri') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                     <i class="bi bi-images w-5 h-5 text-yellow-500 transition duration-75 group-hover:text-yellow-600"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Galeri</span>
-                    <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                 </a>
             </li>
 
@@ -94,17 +91,15 @@
                 </button>
                 <ul id="arsipMenu" class="hidden py-2 space-y-2 pl-8">
                     <li>
-                        <a target="_blank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.penelitian') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.penelitian') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-journal-text text-xs mr-2"></i>
                             <span class="flex-1">Penelitian</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.pengabdian') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.pengabdian') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-people text-xs mr-2"></i>
                             <span class="flex-1">Pengabdian</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                 </ul>
@@ -119,17 +114,15 @@
                 </button>
                 <ul id="layananMenu" class="hidden py-2 space-y-2 pl-8">
                     <li>
-                        <a target="_blank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.sarana-prasarana') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.sarana-prasarana') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-gear text-xs mr-2"></i>
                             <span class="flex-1">Sarana & Prasarana</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.konsul') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.konsul') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-chat-dots text-xs mr-2"></i>
                             <span class="flex-1">Konsultatif</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                 </ul>
@@ -137,10 +130,9 @@
 
             <!-- Link -->
             <li>
-                <a class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="{{ route('admin.link') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('admin.link') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                     <i class="bi bi-link-45deg w-5 h-5 text-pink-500 transition duration-75 group-hover:text-pink-600"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Link</span>
-                    <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                 </a>
             </li>
 

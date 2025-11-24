@@ -77,6 +77,39 @@ Route::get('/visi-misi', function () {
     return view('pages.Admin.VisiMisi');
 })->middleware(['auth', 'verified'])->name('admin.visi-misi');
 
+Route::get('/logo', function () {
+    return view('pages.Admin.logo');
+})->middleware(['auth', 'verified'])->name('admin.logo');
+
+Route::get('/struktur-organisasi', function () {
+    return view('pages.Admin.StrukturOrg');
+})->middleware(['auth', 'verified'])->name('admin.struktur-organisasi');
+
+Route::get('/galeri', function () {
+    return view('pages.Admin.galeri');
+})->middleware(['auth', 'verified'])->name('admin.galeri');
+
+Route::get('/penelitian', function () {
+    return view('pages.Admin.penelitian');
+})->middleware(['auth', 'verified'])->name('admin.penelitian');
+
+Route::get('/pengabdian', function () {
+    return view('pages.Admin.pengabdian');
+})->middleware(['auth', 'verified'])->name('admin.pengabdian');
+
+Route::get('/sarana-prasarana', function () {
+    return view('pages.Admin.Sarpras');
+})->middleware(['auth', 'verified'])->name('admin.sarana-prasarana');
+
+Route::get('/konsul', function () {
+    return view('pages.Admin.konsul');
+})->middleware(['auth', 'verified'])->name('admin.konsul');
+
+Route::get('/link', function () {
+    return view('pages.Admin.link');
+})->middleware(['auth', 'verified'])->name('admin.link');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

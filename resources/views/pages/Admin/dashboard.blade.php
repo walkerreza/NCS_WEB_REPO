@@ -114,7 +114,7 @@
                         </a>
 
                         <!-- Visi Misi -->
-                        <a href="{{ route('profil.visi-misi') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.visi-misi') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-green-500 dark:hover:border-green-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-green-100 dark:bg-green-900 rounded-lg mb-2">
@@ -127,7 +127,7 @@
                         </a>
 
                         <!-- Logo -->
-                        <a href="{{ route('profil.logo') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.logo') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-green-500 dark:hover:border-green-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-green-100 dark:bg-green-900 rounded-lg mb-2">
@@ -140,7 +140,7 @@
                         </a>
 
                         <!-- Struktur Organisasi -->
-                        <a href="{{ route('profil.struktur') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.struktur-organisasi') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-green-500 dark:hover:border-green-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-green-100 dark:bg-green-900 rounded-lg mb-2">
@@ -153,7 +153,7 @@
                         </a>
 
                         <!-- Galeri -->
-                        <a href="{{ route('galeri') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.galeri') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-yellow-500 dark:hover:border-yellow-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-yellow-100 dark:bg-yellow-900 rounded-lg mb-2">
@@ -166,7 +166,7 @@
                         </a>
 
                         <!-- Penelitian -->
-                        <a href="{{ route('arsip.penelitian') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.penelitian') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-purple-500 dark:hover:border-purple-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg mb-2">
@@ -179,7 +179,7 @@
                         </a>
 
                         <!-- Pengabdian -->
-                        <a href="{{ route('arsip.pengabdian') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.pengabdian') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-purple-500 dark:hover:border-purple-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg mb-2">
@@ -192,7 +192,7 @@
                         </a>
 
                         <!-- Sarana & Prasarana -->
-                        <a href="{{ route('layanan.sarana') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.sarana-prasarana') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-orange-500 dark:hover:border-orange-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-orange-100 dark:bg-orange-900 rounded-lg mb-2">
@@ -205,7 +205,7 @@
                         </a>
 
                         <!-- Konsultatif -->
-                        <a href="{{ route('layanan.konsultatif') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.konsul') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-orange-500 dark:hover:border-orange-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-orange-100 dark:bg-orange-900 rounded-lg mb-2">
@@ -218,7 +218,7 @@
                         </a>
 
                         <!-- Link -->
-                        <a href="{{ route('link') }}" target="_blank" class="group">
+                        <a href="{{ route('admin.link') }}" class="group">
                             <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-pink-500 dark:hover:border-pink-400 hover:shadow-md transition-all duration-300">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="p-2 bg-pink-100 dark:bg-pink-900 rounded-lg mb-2">
