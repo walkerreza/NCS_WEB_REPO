@@ -25,12 +25,9 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <!-- Include Sidebar -->
             @include('partials.Admin.sidebar')
-            
-            <!-- Top Navigation -->
-            @include('layouts.navigation')
 
             <!-- Main Content Area with Sidebar offset -->
-            <div class="sm:ml-64">
+            <div id="mainContent" class="sm:ml-64 transition-all duration-300">
                 <!-- Page Heading -->
                 @isset($header)
                     <header class="bg-white dark:bg-gray-800 shadow">
@@ -47,25 +44,5 @@
             </div>
         </div>
 
-        <!-- Sidebar Toggle Script -->
-        <script>
-            function toggleSubmenu(menuId) {
-                const menu = document.getElementById(menuId);
-                const icon = document.getElementById(menuId + 'Icon');
-                
-                if (menu.classList.contains('hidden')) {
-                    menu.classList.remove('hidden');
-                    icon.classList.add('rotate-180');
-                } else {
-                    menu.classList.add('hidden');
-                    icon.classList.remove('rotate-180');
-                }
-            }
-
-            function toggleSidebar() {
-                const sidebar = document.getElementById('adminSidebar');
-                sidebar.classList.toggle('-translate-x-full');
-            }
-        </script>
     </body>
 </html>

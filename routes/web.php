@@ -72,6 +72,11 @@ Route::get('/link', function () {
 Route::get('/dashboard', function () {
     return view('pages.Admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+    
+Route::get('/visi-misi', function () {
+    return view('pages.Admin.VisiMisi');
+})->middleware(['auth', 'verified'])->name('admin.visi-misi');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

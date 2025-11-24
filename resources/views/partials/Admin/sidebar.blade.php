@@ -1,13 +1,24 @@
+<!-- Backdrop Overlay for Mobile -->
+<div id="sidebarBackdrop" class="fixed inset-0 z-30 bg-gray-900/50 hidden sm:hidden"></div>
+
 <!-- Admin Sidebar -->
-<aside id="adminSidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-3 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700">
+<aside id="adminSidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-3 transition-transform bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <!-- Sidebar Header -->
         <div class="mb-3 px-3 py-3 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-900 rounded-lg">
-            <h3 class="text-white font-bold text-base flex items-center">
-                <i class="bi bi-speedometer2 mr-2"></i>
-                Admin Panel
-            </h3>
-            <p class="text-blue-100 text-xs mt-1">Kelola Website Lab NCS</p>
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-white font-bold text-base flex items-center">
+                        <i class="bi bi-speedometer2 mr-2"></i>
+                        Admin Panel
+                    </h3>
+                    <p class="text-blue-100 text-xs mt-1">Kelola Website Lab NCS</p>
+                </div>
+                <!-- Toggle Button Inside Sidebar -->
+                <button id="sidebarToggleInside" onclick="toggleSidebar()" type="button" class="inline-flex items-center justify-center p-2 text-white hover:bg-blue-700 dark:hover:bg-blue-900 rounded-lg transition-colors">
+                    <i class="bi bi-x-lg text-lg"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Navigation Menu -->
@@ -43,10 +54,9 @@
                 </button>
                 <ul id="profilMenu" class="hidden py-2 space-y-2 pl-8">
                     <li>
-                        <a target="_blank" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('admin.visi-misi') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('admin.visi-misi') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
                             <i class="bi bi-eye text-xs mr-2"></i>
                             <span class="flex-1">Visi & Misi</span>
-                            <i class="bi bi-box-arrow-up-right text-xs text-gray-400"></i>
                         </a>
                     </li>
                     <li>
@@ -180,9 +190,120 @@
     </div>
 </aside>
 
-<!-- Mobile Sidebar Toggle Button -->
-<button onclick="toggleSidebar()" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 fixed top-4 left-4 z-50 bg-white dark:bg-gray-800 shadow-lg">
-    <span class="sr-only">Open sidebar</span>
+<!-- Floating Toggle Button (Shows when sidebar is closed) -->
+<button id="sidebarToggle" onclick="toggleSidebar()" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 fixed top-4 left-4 z-50 bg-white dark:bg-gray-800 shadow-lg transition-all duration-300">
+    <span class="sr-only">Toggle sidebar</span>
     <i class="bi bi-list text-2xl"></i>
 </button>
+
+<!-- JavaScript for Sidebar Toggle -->
+<script>
+    // Initialize sidebar state on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('adminSidebar');
+        const mainContent = document.getElementById('mainContent');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const floatingToggle = document.getElementById('sidebarToggle');
+        
+        // Check screen size and set initial state
+        if (window.innerWidth >= 640) {
+            // Desktop: sidebar open by default
+            sidebar.classList.remove('-translate-x-full');
+            mainContent.classList.add('sm:ml-64');
+            floatingToggle.classList.add('hidden');
+            window.sidebarOpen = true;
+        } else {
+            // Mobile: sidebar closed by default
+            sidebar.classList.add('-translate-x-full');
+            backdrop.classList.add('hidden');
+            floatingToggle.classList.remove('hidden');
+            window.sidebarOpen = false;
+        }
+    });
+
+    // Toggle Sidebar for Both Mobile and Desktop
+    function toggleSidebar() {
+        const sidebar = document.getElementById('adminSidebar');
+        const floatingToggle = document.getElementById('sidebarToggle');
+        const mainContent = document.getElementById('mainContent');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        
+        sidebar.classList.toggle('-translate-x-full');
+        window.sidebarOpen = !window.sidebarOpen;
+        
+        // Toggle floating button visibility
+        if (window.sidebarOpen) {
+            floatingToggle.classList.add('hidden');
+        } else {
+            floatingToggle.classList.remove('hidden');
+        }
+        
+        // Handle desktop behavior
+        if (window.innerWidth >= 640) {
+            if (window.sidebarOpen) {
+                mainContent.classList.add('sm:ml-64');
+            } else {
+                mainContent.classList.remove('sm:ml-64');
+            }
+        } else {
+            // Handle mobile backdrop
+            if (window.sidebarOpen) {
+                backdrop.classList.remove('hidden');
+            } else {
+                backdrop.classList.add('hidden');
+            }
+        }
+    }
+
+    // Toggle Submenu
+    function toggleSubmenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById(menuId + 'Icon');
+        
+        menu.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+    }
+
+    // Close sidebar when clicking backdrop (mobile only)
+    document.getElementById('sidebarBackdrop')?.addEventListener('click', function() {
+        const sidebar = document.getElementById('adminSidebar');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const floatingToggle = document.getElementById('sidebarToggle');
+        
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        floatingToggle.classList.remove('hidden');
+        window.sidebarOpen = false;
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        const sidebar = document.getElementById('adminSidebar');
+        const mainContent = document.getElementById('mainContent');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const floatingToggle = document.getElementById('sidebarToggle');
+        
+        if (window.innerWidth >= 640) {
+            // Desktop mode
+            backdrop.classList.add('hidden');
+            if (window.sidebarOpen) {
+                sidebar.classList.remove('-translate-x-full');
+                mainContent.classList.add('sm:ml-64');
+                floatingToggle.classList.add('hidden');
+            } else {
+                floatingToggle.classList.remove('hidden');
+            }
+        } else {
+            // Mobile mode
+            mainContent.classList.remove('sm:ml-64');
+            if (!window.sidebarOpen) {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('hidden');
+                floatingToggle.classList.remove('hidden');
+            } else {
+                floatingToggle.classList.add('hidden');
+            }
+        }
+    });
+</script>
 
