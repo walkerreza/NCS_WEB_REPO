@@ -40,6 +40,20 @@ class Archive extends Model
     ];
 
     /**
+     * Nilai yang diizinkan untuk kolom type
+     *
+     * @var array
+     */
+    public const TYPE_PENELITIAN = 'penelitian';
+
+    public const TYPE_PENGABDIAN = 'pengabdian';
+
+    public static array $validTypes = [
+        self::TYPE_PENELITIAN,
+        self::TYPE_PENGABDIAN,
+    ];
+
+    /**
      * Relasi: Archive dimiliki oleh user
      */
     public function creator()
@@ -93,8 +107,9 @@ class Archive extends Model
     public function getFormattedFileSizeAttribute()
     {
         if ($this->file_size < 1024) {
-            return $this->file_size . ' KB';
+            return $this->file_size.' KB';
         }
-        return round($this->file_size / 1024, 2) . ' MB';
+
+        return round($this->file_size / 1024, 2).' MB';
     }
 }

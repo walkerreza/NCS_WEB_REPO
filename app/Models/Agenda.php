@@ -58,7 +58,7 @@ class Agenda extends Model
     public function scopeUpcoming($query)
     {
         return $query->where('event_date', '>=', now()->toDateString())
-                     ->orderBy('event_date', 'asc');
+            ->orderBy('event_date', 'asc');
     }
 
     /**
@@ -67,6 +67,6 @@ class Agenda extends Model
     public function scopePast($query)
     {
         return $query->where('event_date', '<', now()->toDateString())
-                     ->orderBy('event_date', 'desc');
+            ->orderBy('event_date', 'desc');
     }
 }

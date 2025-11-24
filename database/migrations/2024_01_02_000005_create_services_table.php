@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->enum('category', ['sarana_prasarana', 'konsultatif'])->comment('Kategori layanan');
+            $table->string('category')->comment('Kategori layanan: sarana_prasarana atau konsultatif');
             $table->string('title')->comment('Judul layanan');
             $table->text('description')->comment('Deskripsi layanan');
             $table->string('image_path')->nullable()->comment('Path gambar layanan');
@@ -23,6 +24,11 @@ return new class extends Migration
             $table->boolean('is_active')->default(true)->comment('Status aktif');
             $table->timestamps();
         });
+
+        // Add CHECK constraint for category column (PostgreSQL)
+        if (DB::connection()->getDriverName() === 'pgsql') {
+            DB::statement("ALTER TABLE services ADD CONSTRAINT services_category_check CHECK (category IN ('sarana_prasarana', 'konsultatif'))");
+        }
     }
 
     /**

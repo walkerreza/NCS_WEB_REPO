@@ -69,7 +69,7 @@ Route::get('/link', function () {
 | Routes untuk admin dashboard (memerlukan autentikasi)
 */
 
-Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'verified', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.Admin.dashboard');
     })->name('dashboard');

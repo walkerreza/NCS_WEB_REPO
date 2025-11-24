@@ -28,6 +28,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Check if user is admin
+        if (! Auth::user()->isAdmin()) {
+            Auth::guard('web')->logout();
+            
+            return redirect()->route('login')->withErrors([
+                'email' => 'Access denied. Only administrators can login to this panel.',
+            ]);
+        }
+
         return redirect()->intended(route('admin.dashboard', absolute: false));
     }
 

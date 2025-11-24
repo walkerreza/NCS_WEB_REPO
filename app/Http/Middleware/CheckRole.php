@@ -18,19 +18,36 @@ class CheckRole
     public function handle(Request $request, Closure $next, string $role): Response
     {
         // Cek apakah user sudah login
-        if (!auth()->check()) {
-            return response()->json([
-                'sukses' => false,
-                'pesan' => 'Anda harus login terlebih dahulu',
-            ], 401);
+        if (! auth()->check()) {
+            // Jika request dari API, return JSON
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'sukses' => false,
+                    'pesan' => 'Anda harus login terlebih dahulu',
+                ], 401);
+            }
+            
+            // Jika request dari web, redirect ke login
+            return redirect()->route('login')->withErrors([
+                'email' => 'Please login to access this page.',
+            ]);
         }
 
         // Cek apakah role user sesuai
         if (auth()->user()->role !== $role) {
-            return response()->json([
-                'sukses' => false,
-                'pesan' => 'Anda tidak memiliki akses ke halaman ini',
-            ], 403);
+            // Jika request dari API, return JSON
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'sukses' => false,
+                    'pesan' => 'Anda tidak memiliki akses ke halaman ini',
+                ], 403);
+            }
+            
+            // Jika request dari web, redirect dengan error
+            auth()->logout();
+            return redirect()->route('login')->withErrors([
+                'email' => 'Access denied. You do not have permission to access this page.',
+            ]);
         }
 
         return $next($request);

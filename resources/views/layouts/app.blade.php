@@ -8,8 +8,8 @@
         <title>{{ config('app.name', 'Lab NCS') }} - Dashboard Admin</title>
         
         <!-- Favicon -->
-        <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
-        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/logo-ncs.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('images/logo-ncs.png') }}" type="image/x-icon">
         
         <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">

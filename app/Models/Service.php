@@ -35,6 +35,20 @@ class Service extends Model
     ];
 
     /**
+     * Nilai yang diizinkan untuk kolom category
+     *
+     * @var array
+     */
+    public const CATEGORY_SARANA_PRASARANA = 'sarana_prasarana';
+
+    public const CATEGORY_KONSULTATIF = 'konsultatif';
+
+    public static array $validCategories = [
+        self::CATEGORY_SARANA_PRASARANA,
+        self::CATEGORY_KONSULTATIF,
+    ];
+
+    /**
      * Scope: Filter berdasarkan kategori
      */
     public function scopeCategory($query, $category)
