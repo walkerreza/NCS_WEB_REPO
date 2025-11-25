@@ -57,86 +57,90 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Kepala Laboratorium -->
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl">
-                        <div class="p-6">
-                            <div class="mb-4">
-                                <div class="w-32 h-32 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center mx-auto text-5xl">
-                                    <i class="bi bi-person"></i>
+                    <a href="{{ route('profil.tim-pengelola', ['slug' => 'kepala-laboratorium']) }}" class="no-underline block">
+                        <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl hover-lift transition-all duration-300">
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center mx-auto text-5xl">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-xl font-bold mb-1 text-gray-900 dark:text-white">Dr. Budi Harijanto, M.T.</h5>
+                                <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-2">Kepala Laboratorium</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">NIP: 197001011999031001</p>
+                                <div class="inline-flex items-center text-blue-600 dark:text-blue-400 text-sm font-semibold">
+                                    <span>Lihat Detail</span>
+                                    <i class="bi bi-arrow-right ml-1"></i>
                                 </div>
                             </div>
-                            <h5 class="text-xl font-bold mb-1">Dr. Nama Dosen, M.T.</h5>
-                            <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-2">Kepala Laboratorium</p>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">NIP: 123456789</p>
-                            <div class="flex justify-center gap-3 mt-4">
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600"><i class="bi bi-envelope"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600"><i class="bi bi-linkedin"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600"><i class="bi bi-globe"></i></a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <!-- Koordinator Penelitian -->
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl">
-                        <div class="p-6">
-                            <div class="mb-4">
-                                <div class="w-32 h-32 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 text-white flex items-center justify-center mx-auto text-5xl">
-                                    <i class="bi bi-person"></i>
+                    <a href="{{ route('profil.tim-pengelola', ['slug' => 'koordinator-penelitian']) }}" class="no-underline block">
+                        <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl hover-lift transition-all duration-300">
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-green-600 to-green-800 text-white flex items-center justify-center mx-auto text-5xl">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-xl font-bold mb-1 text-gray-900 dark:text-white">Dr. Siti Nurmaini, S.T., M.T.</h5>
+                                <p class="text-green-600 dark:text-green-400 text-sm font-semibold mb-2">Koordinator Penelitian</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">NIP: 198203152006042001</p>
+                                <div class="inline-flex items-center text-green-600 dark:text-green-400 text-sm font-semibold">
+                                    <span>Lihat Detail</span>
+                                    <i class="bi bi-arrow-right ml-1"></i>
                                 </div>
                             </div>
-                            <h5 class="text-xl font-bold mb-1">Nama Dosen, S.T., M.T.</h5>
-                            <p class="text-green-600 dark:text-green-400 text-sm font-semibold mb-2">Koordinator Penelitian</p>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">NIP: 123456789</p>
-                            <div class="flex justify-center gap-3 mt-4">
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-green-600"><i class="bi bi-envelope"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-green-600"><i class="bi bi-linkedin"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-green-600"><i class="bi bi-globe"></i></a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <!-- Koordinator Pengabdian -->
                 <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl">
-                        <div class="p-6">
-                            <div class="mb-4">
-                                <div class="w-32 h-32 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 text-white flex items-center justify-center mx-auto text-5xl">
-                                    <i class="bi bi-person"></i>
+                    <a href="{{ route('profil.tim-pengelola', ['slug' => 'koordinator-pengabdian']) }}" class="no-underline block">
+                        <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl hover-lift transition-all duration-300">
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 text-white flex items-center justify-center mx-auto text-5xl">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-xl font-bold mb-1 text-gray-900 dark:text-white">Ahmad Fauzi, S.Kom., M.Kom.</h5>
+                                <p class="text-yellow-600 dark:text-yellow-400 text-sm font-semibold mb-2">Koordinator Pengabdian</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">NIP: 198505102010121003</p>
+                                <div class="inline-flex items-center text-yellow-600 dark:text-yellow-400 text-sm font-semibold">
+                                    <span>Lihat Detail</span>
+                                    <i class="bi bi-arrow-right ml-1"></i>
                                 </div>
                             </div>
-                            <h5 class="text-xl font-bold mb-1">Nama Dosen, S.Kom., M.Kom.</h5>
-                            <p class="text-yellow-600 dark:text-yellow-400 text-sm font-semibold mb-2">Koordinator Pengabdian</p>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">NIP: 123456789</p>
-                            <div class="flex justify-center gap-3 mt-4">
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-yellow-600"><i class="bi bi-envelope"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-yellow-600"><i class="bi bi-linkedin"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-yellow-600"><i class="bi bi-globe"></i></a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <!-- Laboran -->
                 <div data-aos="fade-up" data-aos-delay="400">
-                    <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl">
-                        <div class="p-6">
-                            <div class="mb-4">
-                                <div class="w-32 h-32 rounded-full bg-red-600 text-white flex items-center justify-center mx-auto text-5xl">
-                                    <i class="bi bi-person"></i>
+                    <a href="{{ route('profil.tim-pengelola', ['slug' => 'laboran']) }}" class="no-underline block">
+                        <div class="card text-center border-0 shadow-sm h-full bg-white dark:bg-slate-700 rounded-xl hover-lift transition-all duration-300">
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-red-600 to-red-800 text-white flex items-center justify-center mx-auto text-5xl">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-xl font-bold mb-1 text-gray-900 dark:text-white">Rina Kusumawati, A.Md.</h5>
+                                <p class="text-red-600 dark:text-red-400 text-sm font-semibold mb-2">Laboran</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">NIP: 199012152015032002</p>
+                                <div class="inline-flex items-center text-red-600 dark:text-red-400 text-sm font-semibold">
+                                    <span>Lihat Detail</span>
+                                    <i class="bi bi-arrow-right ml-1"></i>
                                 </div>
                             </div>
-                            <h5 class="text-xl font-bold mb-1">Nama Laboran, A.Md.</h5>
-                            <p class="text-red-600 dark:text-red-400 text-sm font-semibold mb-2">Laboran</p>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">NIP: 123456789</p>
-                            <div class="flex justify-center gap-3 mt-4">
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-red-600"><i class="bi bi-envelope"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-red-600"><i class="bi bi-linkedin"></i></a>
-                                <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-red-600"><i class="bi bi-globe"></i></a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
