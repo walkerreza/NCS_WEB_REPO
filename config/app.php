@@ -1,126 +1,135 @@
 <?php
+/**
+ * Application Configuration
+ * Global settings and constants
+ */
 
-return [
+// Start session if not started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Name
-    |--------------------------------------------------------------------------
-    |
-    | This value is the name of your application, which will be used when the
-    | framework needs to place the application's name in a notification or
-    | other UI elements where an application name needs to be displayed.
-    |
-    */
+// Load database configuration
+require_once __DIR__ . '/database.php';
 
-    'name' => env('APP_NAME', 'Laravel'),
+// Application constants
+define('APP_NAME', getenv('APP_NAME') ?: 'NCS Laboratory');
+define('APP_URL', getenv('APP_URL') ?: 'http://localhost/ncs');
+define('APP_DEBUG', getenv('APP_DEBUG') === 'true');
+define('MAX_FILE_SIZE', (int)(getenv('MAX_FILE_SIZE') ?: 5242880)); // 5MB default for images
+define('MAX_VIDEO_SIZE', (int)(getenv('MAX_VIDEO_SIZE') ?: 104857600)); // 100MB default for videos
+define('ALLOWED_EXTENSIONS', explode(',', getenv('ALLOWED_EXTENSIONS') ?: 'pdf,jpg,jpeg,png,gif'));
+define('ALLOWED_VIDEO_EXTENSIONS', ['mp4', 'webm', 'ogg', 'mov']);
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Environment
-    |--------------------------------------------------------------------------
-    |
-    | This value determines the "environment" your application is currently
-    | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
-    |
-    */
+// Path constants
+define('ROOT_PATH', dirname(__DIR__));
+define('PUBLIC_PATH', ROOT_PATH . '/public');
+define('UPLOAD_PATH', PUBLIC_PATH . '/uploads');
+define('DOCUMENT_PATH', UPLOAD_PATH . '/documents');
+define('IMAGE_PATH', UPLOAD_PATH . '/images');
 
-    'env' => env('APP_ENV', 'production'),
+// Create upload directories if not exist
+$directories = [UPLOAD_PATH, DOCUMENT_PATH, IMAGE_PATH];
+foreach ($directories as $dir) {
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
-    |
-    */
+// Error handling based on debug mode
+if (APP_DEBUG) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+} else {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+}
 
-    'debug' => (bool) env('APP_DEBUG', false),
+// Timezone setting
+date_default_timezone_set('Asia/Jakarta');
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application URL
-    |--------------------------------------------------------------------------
-    |
-    | This URL is used by the console to properly generate URLs when using
-    | the Artisan command line tool. You should set this to the root of
-    | the application so that it's available within Artisan commands.
-    |
-    */
+// Helper function for base URL
+function baseUrl($path = '') {
+    return rtrim(APP_URL, '/') . '/' . ltrim($path, '/');
+}
 
-    'url' => env('APP_URL', 'http://localhost'),
+// Helper function for assets URL
+function asset($path) {
+    return baseUrl('public/assets/' . ltrim($path, '/'));
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Timezone
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify the default timezone for your application, which
-    | will be used by the PHP date and date-time functions. The timezone
-    | is set to "UTC" by default as it is suitable for most use cases.
-    |
-    */
+// Helper function for upload URL
+function uploadUrl($path) {
+    return baseUrl('public/uploads/' . ltrim($path, '/'));
+}
 
-    'timezone' => 'UTC',
+// Flash message helper
+function setFlash($type, $message) {
+    $_SESSION['flash'] = [
+        'type' => $type,
+        'message' => $message
+    ];
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Locale Configuration
-    |--------------------------------------------------------------------------
-    |
-    | The application locale determines the default locale that will be used
-    | by Laravel's translation / localization methods. This option can be
-    | set to any locale for which you plan to have translation strings.
-    |
-    */
+function getFlash() {
+    if (isset($_SESSION['flash'])) {
+        $flash = $_SESSION['flash'];
+        unset($_SESSION['flash']);
+        return $flash;
+    }
+    return null;
+}
 
-    'locale' => env('APP_LOCALE', 'en'),
+// Security helpers
+function csrf_token() {
+    if (!isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+function csrf_field() {
+    return '<input type="hidden" name="csrf_token" value="' . csrf_token() . '">';
+}
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+function verify_csrf($token) {
+    return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | Encryption Key
-    |--------------------------------------------------------------------------
-    |
-    | This key is utilized by Laravel's encryption services and should be set
-    | to a random, 32 character string to ensure that all encrypted values
-    | are secure. You should do this prior to deploying the application.
-    |
-    */
+// Sanitize input helper
+function sanitize($input) {
+    if (is_array($input)) {
+        return array_map('sanitize', $input);
+    }
+    return htmlspecialchars(strip_tags(trim($input)), ENT_QUOTES, 'UTF-8');
+}
 
-    'cipher' => 'AES-256-CBC',
+// Check if user is logged in
+function isLoggedIn() {
+    return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+}
 
-    'key' => env('APP_KEY'),
+// Check if user is admin
+function isAdmin() {
+    return isLoggedIn() && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+}
 
-    'previous_keys' => [
-        ...array_filter(
-            explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
-        ),
-    ],
+// Redirect helper
+function redirect($url) {
+    header("Location: $url");
+    exit;
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | Maintenance Mode Driver
-    |--------------------------------------------------------------------------
-    |
-    | These configuration options determine the driver used to determine and
-    | manage Laravel's "maintenance mode" status. The "cache" driver will
-    | allow maintenance mode to be controlled across multiple machines.
-    |
-    | Supported drivers: "file", "cache"
-    |
-    */
+// Format date in Indonesian
+function formatDate($date, $format = 'd F Y') {
+    $months = [
+        'January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret',
+        'April' => 'April', 'May' => 'Mei', 'June' => 'Juni',
+        'July' => 'Juli', 'August' => 'Agustus', 'September' => 'September',
+        'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'
+    ];
+    
+    $formatted = date($format, strtotime($date));
+    return strtr($formatted, $months);
+}
 
-    'maintenance' => [
-        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
-        'store' => env('APP_MAINTENANCE_STORE', 'database'),
-    ],
-
-];
