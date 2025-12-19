@@ -675,7 +675,7 @@ Website NCS Laboratory adalah platform digital berbasis web yang berfungsi sebag
 **Tabel 5.1: Jadwal Proyek (Diagram Gantt)**
 
 ```
-Fase/Aktivitas                    | Minggu 1 | Minggu 2 | Minggu 4 | Minggu 5 | Minggu 6 | Minggu 7
+Fase/Aktivitas                    | Minggu 1 | Minggu 2 | Minggu 4 | Minggu 5 | Minggu 6 |
 ----------------------------------|------------|------------|------------|------------|-------------|-------------
 FASE 1: INISIASI                  |████████████|            |            |            |             |
   - Analisis Kebutuhan            |████████    |            |            |            |             |
@@ -1580,4 +1580,5 @@ CREATE TABLE comments (
 ---
 
 *Dibuat dengan ❤️ menggunakan PHP Native, PostgreSQL, dan TailwindCSS*
+
 
